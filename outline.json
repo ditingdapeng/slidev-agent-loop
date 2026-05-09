@@ -1,0 +1,90 @@
+{
+  "project_id": "docpilot-slidev-open-loop",
+  "title": "AI Slides Open Loop",
+  "subtitle": "用 Slidev 复刻开放、可控、可验证的 AI PPT 生成闭环",
+  "author": "Dapeng Lab",
+  "date": "2026-05-09",
+  "theme": "default",
+  "style": {
+    "accent": "#2563eb",
+    "secondary": "#16a34a",
+    "background": "#f8fafc",
+    "tone": "工程化、克制、证据优先"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "layout": "cover",
+      "title": "AI Slides Open Loop",
+      "summary": "从 Manus Slides 的黑盒机制，到 Slidev 的开放复刻。"
+    },
+    {
+      "id": "problem",
+      "layout": "bullets",
+      "title": "问题：AI PPT 不能只是一次性生成",
+      "summary": "真正可用的 AI PPT 系统需要可编辑、可预览、可导出、可验证。",
+      "bullets": [
+        "二进制 PPTX 难以被 Agent 精确 diff 和增量修复",
+        "纯 HTML 托管缺少项目生命周期和导出闭环",
+        "黑盒平台能力强，但迁移和调试成本高"
+      ]
+    },
+    {
+      "id": "manus_findings",
+      "layout": "bullets",
+      "title": "Manus 给出的工程启示",
+      "summary": "Manus Slides 的关键不是某个开源框架，而是 artifact 生命周期。",
+      "bullets": [
+        "文件层：slide_state.json + 每页 HTML",
+        "注册层：available slide projects 白名单",
+        "预览层：slide_present 返回 manus-slides:// 链接",
+        "状态层：只有 edited slide 才能进入预览"
+      ]
+    },
+    {
+      "id": "open_architecture",
+      "layout": "mermaid",
+      "title": "开放复刻：Slidev + Registry + Sandbox",
+      "summary": "用公开工具复刻 Manus 的工程思想，而不是复刻私有协议。",
+      "diagram": "flowchart LR\n  A[AI Outline] --> B[slides.md]\n  B --> C[Slidev Dev Preview]\n  B --> D[Slidev Build]\n  D --> E[Static Preview]\n  B --> F[Export PDF PNG PPTX]\n  C --> G[Registry]\n  D --> G\n  F --> G\n  G --> H[Verification Report]"
+    },
+    {
+      "id": "registry",
+      "layout": "table",
+      "title": "开放 Registry：把白名单变成透明元数据",
+      "summary": "我们保留注册层，但不做隐藏状态。",
+      "headers": ["字段", "作用", "Manus 对照"],
+      "rows": [
+        ["project_id", "项目身份", "presentation/project id"],
+        ["project_dir", "可迁移路径", "project_dir"],
+        ["entry", "Slidev 源文件", "每页 HTML + state"],
+        ["preview_url", "本地或沙箱预览", "manus-slides://"],
+        ["exports", "PDF/PNG/PPTX 产物", "附件导出"]
+      ]
+    },
+    {
+      "id": "verification",
+      "layout": "bullets",
+      "title": "验证闭环：让生成结果可被机器检查",
+      "summary": "AI 生成之后，系统必须能自己判断产物是否可用。",
+      "bullets": [
+        "校验 outline 与 slides.md 页数一致",
+        "校验资源路径存在且可读取",
+        "构建 dist 并启动静态预览",
+        "截图检查非空画面",
+        "导出 PNG/PDF/PPTX 并记录产物"
+      ]
+    },
+    {
+      "id": "takeaway",
+      "layout": "bullets",
+      "title": "结论：PPT 应该成为可执行工程对象",
+      "summary": "Slidev 让开放实现变得足够简单，Manus 让我们看清注册层的重要性。",
+      "bullets": [
+        "Manus 证明了 Web Slides + 沙箱 + 注册层的产品价值",
+        "Slidev 提供了开放、可迁移、可调试的实现底座",
+        "AI 负责生成结构化内容，代码负责验证和交付"
+      ]
+    }
+  ]
+}

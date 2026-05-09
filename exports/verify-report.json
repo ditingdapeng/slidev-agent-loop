@@ -1,0 +1,29 @@
+{
+  "project_id": "docpilot-slidev-open-loop",
+  "outline_slide_count": 7,
+  "generated_slides_md": true,
+  "slide_separator_count": 7,
+  "dist_exists": true,
+  "registry_has_project": true,
+  "registry_status": "serving",
+  "exports": {
+    "png_count": 7,
+    "pdf_exists": true,
+    "pptx_exists": true
+  },
+  "checks": [
+    {
+      "name": "outline/slides.md generated",
+      "ok": true
+    },
+    {
+      "name": "registry project registered",
+      "ok": true
+    },
+    {
+      "name": "dist build exists",
+      "ok": true
+    }
+  ],
+  "ok": true
+}

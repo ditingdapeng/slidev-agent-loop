@@ -1,0 +1,23 @@
+{
+  "name": "slidev-agent-loop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/open-slidev-loop.mjs generate",
+    "build": "slidev build --out dist",
+    "dev": "slidev --port 3045",
+    "present": "node scripts/open-slidev-loop.mjs present --serve --port 4185",
+    "export:png": "slidev export --format png --output exports/png",
+    "export:pdf": "slidev export --format pdf --output exports/deck.pdf",
+    "export:pptx": "slidev export --format pptx --output exports/deck.pptx",
+    "verify": "node scripts/open-slidev-loop.mjs verify"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "latest"
+  }
+}
